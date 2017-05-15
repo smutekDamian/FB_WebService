@@ -32,7 +32,7 @@ public class LoginController {
             return "redirect:/connect/facebook";
         }
 
-        model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
+//        model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
         PagedList<Post> feed = facebook.feedOperations().getFeed();
         model.addAttribute("feed", feed);
         return "hello";

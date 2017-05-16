@@ -1,11 +1,11 @@
 <body>
 <h2>My Posts</h2>
 
-<ul>
-  <li *ngFor="let post of posts | async">
-    <span>{{post.from}}</span>
+<ul class="items">
+  <li *ngFor="let post of posts">
+    <span>{{post.fro}}</span>
     <span>{{post.message}}</span>
-    <span>{{post.picture}}</span>
+    <span *ngIf="(post.picture)"><img src="{{post.picture}}"></span>
   </li>
 </ul>
 </body>

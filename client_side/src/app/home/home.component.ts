@@ -7,18 +7,22 @@ import {PostService} from "../post.service";
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit{
-  posts: Post[];
+  posts: Post[] = [];
+  errorMessage: string;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {
+  }
 
-  getPosts(): void {
+  get(): void {
     this.postService
       .getPosts()
-      .then(posts => this.posts = posts);
+      .subscribe(
+        posts => this.posts = posts,
+        error => this.errorMessage = <any>error);
   }
 
   ngOnInit(): void {
-    this.getPosts();
+    this.get();
   }
 
 }

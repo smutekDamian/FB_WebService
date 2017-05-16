@@ -1,5 +1,5 @@
 export class Post {
-  from: string;
+  fro: string;
   message: string;
   picture: string;
 }

@@ -1,6 +1,5 @@
 package pl.smutek;
 
-import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.ui.Model;
@@ -25,7 +24,7 @@ public class PostController {
 
     @GetMapping
     @RequestMapping("/api/feeds")
-    public PagedList<org.springframework.social.facebook.api.Post> getFeeds(Model model){
+    public Object[] getFeeds(Model model){
 //        String [] fields = {Field.ID.toString(), Field.FIRST_NAME.toString(),
 //                Field.LAST_NAME.toString(), Field.EMAIL.toString()};
 //        User user = facebook.fetchObject("me", User.class, fields);
@@ -33,6 +32,14 @@ public class PostController {
 //        model.addAttribute("facebookProfile", user);
         PagedList<org.springframework.social.facebook.api.Post> feed = facebook.feedOperations().getFeed();
 //        model.addAttribute("feed", feed);
-        return feed;
+        List<pl.smutek.model.Post> list = new ArrayList<>();
+        for (org.springframework.social.facebook.api.Post p: feed){
+            String from = String.valueOf(p.getFrom());
+            String message = p.getMessage();
+            String picture = p.getPicture();
+            pl.smutek.model.Post post = new pl.smutek.model.Post(from, message, picture);
+            list.add(post);
+        }
+        return list.toArray();
     }
 }

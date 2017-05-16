@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
+import {PostService} from "./post.service";
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { StartComponent } from './start/start.component';
       }
     ])
   ],
-  providers: [],
+  providers: [ PostService ],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })

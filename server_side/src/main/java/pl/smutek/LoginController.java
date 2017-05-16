@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by damian on 04.03.17.
  */
 @Controller
-@RequestMapping("/api/login")
+@RequestMapping("/")
 public class LoginController {
 
     private Facebook facebook;

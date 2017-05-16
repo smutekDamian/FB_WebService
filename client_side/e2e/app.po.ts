@@ -6,6 +6,6 @@ export class AngularTourOfHeroesPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('start-root h1')).getText();
   }
 }

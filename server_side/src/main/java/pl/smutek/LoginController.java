@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by damian on 04.03.17.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 public class LoginController {
 
     private Facebook facebook;
@@ -39,7 +39,7 @@ public class LoginController {
         model.addAttribute("facebookProfile", user);
         PagedList<Post> feed = facebook.feedOperations().getFeed();
         model.addAttribute("feed", feed);
-        return "hello";
+        return "redirect:/home";
     }
 
 }

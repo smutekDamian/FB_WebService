@@ -5,11 +5,11 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Post;
+import org.springframework.social.facebook.api.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by damian on 04.03.17.
@@ -32,7 +32,11 @@ public class LoginController {
             return "redirect:/connect/facebook";
         }
 
-//        model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
+        String [] fields = {Field.ID.toString(), Field.FIRST_NAME.toString(),
+                 Field.LAST_NAME.toString(), Field.EMAIL.toString()};
+        User user = facebook.fetchObject("me", User.class, fields);
+
+        model.addAttribute("facebookProfile", user);
         PagedList<Post> feed = facebook.feedOperations().getFeed();
         model.addAttribute("feed", feed);
         return "hello";

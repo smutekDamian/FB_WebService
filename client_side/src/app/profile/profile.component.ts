@@ -9,7 +9,7 @@ import {ProfileDetails} from "../profile-details";
 })
 export class ProfileComponent implements OnInit{
   posts: Post[] = [];
-  profileDetails: ProfileDetails;
+  profileDetails: ProfileDetails = new ProfileDetails();
   errorMessage: string;
 
   constructor(private postService: ProfileDetailsService) {
@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     this.getPosts();
     this.getProfileDetails();
-    console.log(this.profileDetails.firstName)
   }
 
 }

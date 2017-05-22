@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import {Response, Http} from "@angular/http";
 import {Post} from "./post";
+import { ProfileDetails } from "./profile-details";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PostService {
-  private postsUrl = 'api/feeds';
+export class ProfileDetailsService {
+  private postsUrl = 'api/profilePosts';
+  private profileDetailUrl = 'api/profileDetails';
 
   constructor(private http: Http) { }
 
   getPosts(): Observable<Post[]> {
     return this.http.get(this.postsUrl)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+  getProfileDetails(): Observable<ProfileDetails> {
+    return this.http.get(this.profileDetailUrl)
       .map(this.extractData)
       .catch(this.handleError);
   }

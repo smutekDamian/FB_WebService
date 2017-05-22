@@ -2,10 +2,12 @@ package pl.smutek;
 
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
+import org.springframework.social.facebook.api.User;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.smutek.model.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +25,8 @@ public class PostController {
     }
 
     @GetMapping
-    @RequestMapping("/api/feeds")
-    public Object[] getFeeds(Model model){
+    @RequestMapping("/api/profilePosts")
+    public Object[] getProfilesPost(){
 //        String [] fields = {Field.ID.toString(), Field.FIRST_NAME.toString(),
 //                Field.LAST_NAME.toString(), Field.EMAIL.toString()};
 //        User user = facebook.fetchObject("me", User.class, fields);
@@ -41,5 +43,15 @@ public class PostController {
             list.add(post);
         }
         return list.toArray();
+    }
+
+    @GetMapping
+    @RequestMapping("/api/profileDetails")
+    public Object getProfilesDetails(){
+        String [] fields = {Field.ID.toString(), Field.FIRST_NAME.toString(),
+                Field.LAST_NAME.toString(), Field.EMAIL.toString()};
+        User user = facebook.fetchObject("me", User.class, fields);
+        UserDetails userDetails = new UserDetails(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail());
+        return userDetails;
     }
 }

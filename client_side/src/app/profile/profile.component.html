@@ -1,7 +1,12 @@
 <body>
+{{profileDetails.id}}
+{{profileDetails.firstName}}
+{{profileDetails.lastName}}
+{{profileDetails.email}}
+<br>
+<br>
 <h2>My Posts</h2>
-
-<ul class="items">
+<ul>
   <li *ngFor="let post of posts">
     <span>{{post.fro}}</span>
     <span>{{post.message}}</span>

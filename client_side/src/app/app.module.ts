@@ -5,15 +5,15 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 import { StartComponent } from './start/start.component';
-import {PostService} from "./post.service";
+import {ProfileDetailsService} from "./profileDetails.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    ProfileComponent,
     StartComponent
   ],
   imports: [
@@ -23,8 +23,8 @@ import {PostService} from "./post.service";
     JsonpModule,
     RouterModule.forRoot([
       {
-        path: 'home',
-        component: HomeComponent
+        path: 'profile',
+        component: ProfileComponent
       },
       {
         path: 'start',
@@ -37,7 +37,7 @@ import {PostService} from "./post.service";
       }
     ])
   ],
-  providers: [ PostService ],
+  providers: [ ProfileDetailsService ],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })

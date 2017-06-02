@@ -1,0 +1,13 @@
+<body>
+
+<br>
+<br>
+<ul>
+  <li *ngFor="let post of posts">
+    <span>{{post.name}}</span>
+    <span>{{post.fro}}</span>
+    <span>{{post.message}}</span>
+    <span *ngIf="(post.picture)"><img src="{{post.picture}}"></span>
+  </li>
+</ul>
+</body>

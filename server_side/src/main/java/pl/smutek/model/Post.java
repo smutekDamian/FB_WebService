@@ -4,6 +4,7 @@ package pl.smutek.model;
  * Created by damian on 16.05.17.
  */
 public class Post {
+    private String name;
     private String from;
     private String message;
     private String picture;
@@ -12,6 +13,21 @@ public class Post {
         this.from = from;
         this.message = message;
         this.picture = picture;
+    }
+
+    public Post(String name, String from, String message, String picture) {
+        this.name = name;
+        this.from = from;
+        this.message = message;
+        this.picture = picture;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Post() {

@@ -1,12 +1,12 @@
-package pl.smutek;
+package pl.smutek.controller;
 
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.User;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.smutek.Field;
 import pl.smutek.model.UserDetails;
 
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ import java.util.List;
  * Created by damian on 16.05.17.
  */
 @RestController
-public class PostController {
+public class OwnerProfileController {
 
     private Facebook facebook;
 
-    public PostController(Facebook facebook) {
+    public OwnerProfileController(Facebook facebook) {
         this.facebook = facebook;
     }
 

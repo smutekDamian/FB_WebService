@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from "../post";
+import {Post} from "../model/post";
 import {ProfileDetailsService} from "../profileDetails.service";
-import {ProfileDetails} from "../profile-details";
+import {ProfileDetails} from "../model/profile-details";
 
 @Component({
   selector: 'app-home',

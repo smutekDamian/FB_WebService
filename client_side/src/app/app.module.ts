@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StartComponent } from './start/start.component';
 import {ProfileDetailsService} from "./profileDetails.service";
+import { WallPostService } from "./wallPost.service"
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
-    StartComponent
+    StartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,13 +34,17 @@ import {ProfileDetailsService} from "./profileDetails.service";
         component: StartComponent
       },
       {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
         path: '',
         redirectTo: '/start',
         pathMatch: 'full'
       }
     ])
   ],
-  providers: [ ProfileDetailsService ],
+  providers: [ ProfileDetailsService, WallPostService ],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })

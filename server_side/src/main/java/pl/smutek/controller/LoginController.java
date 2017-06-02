@@ -1,4 +1,4 @@
-package pl.smutek;
+package pl.smutek.controller;
 
 
 import org.springframework.social.connect.ConnectionRepository;

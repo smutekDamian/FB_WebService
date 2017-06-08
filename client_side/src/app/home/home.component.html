@@ -2,12 +2,21 @@
 
 <br>
 <br>
-<ul>
-  <li *ngFor="let post of posts">
-    <span>{{post.name}}</span>
-    <span>{{post.fro}}</span>
-    <span>{{post.message}}</span>
-    <span *ngIf="(post.picture)"><img src="{{post.picture}}"></span>
-  </li>
-</ul>
+<div class="container">
+  <h3>Witaj {{profileDetails.firstName}}. Chcesz dodać post na swoją tablice?
+  <br>
+    Śmiało !
+  </h3>
+  <br>
+  <br>
+  <form>
+    <div class="col-xs-7">
+      <label for="post">Post</label>
+      <textarea class="form-control" id="post" [(ngModel)]="post" name="p" rows="5"></textarea>
+
+      <button type="submit" class="btn btn-success" (click)="onSubmit()">Wyślij</button>
+    </div>
+  </form>
+
+</div>
 </body>

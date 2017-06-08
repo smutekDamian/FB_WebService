@@ -39,7 +39,8 @@ public class OwnerProfileController {
             String from = String.valueOf(p.getFrom());
             String message = p.getMessage();
             String picture = p.getPicture();
-            pl.smutek.model.Post post = new pl.smutek.model.Post(from, message, picture);
+            String name = p.getName();
+            pl.smutek.model.Post post = new pl.smutek.model.Post(from, message, name, picture);
             list.add(post);
         }
         return list.toArray();

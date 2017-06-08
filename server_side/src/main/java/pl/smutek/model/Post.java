@@ -1,21 +1,20 @@
 package pl.smutek.model;
 
+import java.io.Serializable;
+
 /**
  * Created by damian on 16.05.17.
  */
-public class Post {
-    private String name;
-    private String from;
+public class Post implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String message;
+    private String from;
+    private String name;
     private String picture;
 
-    public Post( String from, String message, String picture) {
-        this.from = from;
-        this.message = message;
-        this.picture = picture;
-    }
 
-    public Post(String name, String from, String message, String picture) {
+
+    public Post(String message, String from, String name,   String picture) {
         this.name = name;
         this.from = from;
         this.message = message;

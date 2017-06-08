@@ -1,6 +1,6 @@
 export class Post {
   name: string
-  fro: string;
+  from: string;
   message: string;
   picture: string;
 }

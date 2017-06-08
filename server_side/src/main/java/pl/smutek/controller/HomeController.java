@@ -1,12 +1,21 @@
 package pl.smutek.controller;
 
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.PagedList;
-import org.springframework.social.facebook.api.Post;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
+import jdk.nashorn.internal.objects.NativeJSON;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.social.ApiException;
+import org.springframework.social.facebook.api.*;
+import org.springframework.web.bind.annotation.*;
+import pl.smutek.Field;
+import pl.smutek.model.*;
+import pl.smutek.model.Post;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,19 +30,23 @@ public class HomeController {
         this.facebook = facebook;
     }
 
-    @GetMapping
-    @RequestMapping("/api/wall")
-    public Object[] getWallPosts(){
-        PagedList<Post> posts = facebook.feedOperations().getPosts();
-        List<pl.smutek.model.Post> list = new ArrayList<>();
-        for (Post p: posts) {
-            pl.smutek.model.Post post = new pl.smutek.model.Post();
-            post.setFrom(p.getFrom().toString());
-            post.setMessage(p.getMessage());
-            post.setName(p.getName());
-            post.setPicture(p.getPicture());
-            list.add(post);
+
+
+
+    @RequestMapping(value = "/api/wall", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public @ResponseBody ResponseEntity<Void> sendPost(@RequestBody String post) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Post post1 = mapper.readValue(post, Post.class);
+        String [] fields = {Field.ID.toString()};
+        User user = facebook.fetchObject("me", User.class, fields);
+        PostData postData = new PostData(user.getId());
+        postData.message(post1.getMessage());
+        try {
+            facebook.feedOperations().post(postData);
+        } catch (ApiException e){
+            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return list.toArray();
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

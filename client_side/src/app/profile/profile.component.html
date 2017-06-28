@@ -1,15 +1,42 @@
 <body>
-{{profileDetails.firstName}}
-{{profileDetails.lastName}}
-{{profileDetails.email}}
+<h2>Witaj {{profileDetails.firstName}}</h2>
+<span *ngIf="(profileDetails.profileImage)"><img class="profileImage" src="{{profileDetails.profileImage}}"></span>
 <br>
 <br>
-<h2>My Posts</h2>
+<div class="buttonHolder">
+  <a href="/profileDetails">
+    <button class="btn btn-sm animated-button victoria-one" type="button">
+      Zobacz swój profil
+    </button>
+  </a>
+</div>
+<div class="buttonHolder">
+  <a href="/home">
+    <button class="btn btn-sm animated-button victoria-one" type="button">
+      Dodaj nowy post !
+    </button>
+  </a>
+</div>
+
+<br>
+<br>
+<h2>Oto Twoje ostatnie posty</h2>
 <ul>
   <li *ngFor="let post of posts">
-    <span>{{post.fro}}</span>
-    <span>{{post.message}}</span>
+    <span>
+      <h4>{{post.name}}</h4>
+    </span>
+    <span>
+      <h6>{{post.message}}</h6>
+    </span>
     <span *ngIf="(post.picture)"><img src="{{post.picture}}"></span>
+    <div class="deletePostButtonWrapper">
+      <a>
+        <button class="btn btn-sm animated-button victoria-one" type="submit" (click)="deletePost(post.id)">
+          Usuń ten post
+        </button>
+      </a>
+    </div>
   </li>
 </ul>
 </body>

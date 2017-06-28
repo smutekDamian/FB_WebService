@@ -1,0 +1,18 @@
+<body>
+<h2>{{profileDetails.firstName}} {{profileDetails.lastName}}</h2>
+<span *ngIf="(profileDetails.profileImage)"><img class="profileImage" src="{{profileDetails.profileImage}}"></span>
+<br>
+<br>
+<div class="profileData">
+  <h4>Adres Email: {{profileDetails.email}}</h4>
+  <h4>Data urodzenia: {{profileDetails.birthday}}</h4>
+  <h4>Miasto rodzinne: {{profileDetails.hometown}}</h4>
+  <h4>O Tobie: {{profileDetails.about}}</h4>
+</div>
+<br>
+<br>
+<a href="/profile">
+  <button class="btn btn-sm animated-button victoria-one" type="button">Wróć</button>
+</a>
+
+</body>

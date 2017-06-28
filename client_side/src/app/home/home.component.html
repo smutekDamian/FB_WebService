@@ -3,20 +3,33 @@
 <br>
 <br>
 <div class="container">
-  <h3>Witaj {{profileDetails.firstName}}. Chcesz dodać post na swoją tablice?
+  <h3>{{profileDetails.firstName}},
+    <br>
+    Chcesz dodać post na swoją tablice?
   <br>
     Śmiało !
   </h3>
   <br>
   <br>
   <form>
-    <div class="col-xs-7">
+    <div class="postForm">
       <label for="post">Post</label>
-      <textarea class="form-control" id="post" [(ngModel)]="post" name="p" rows="5"></textarea>
+      <textarea class="postForm" id="post" [(ngModel)]="post" name="p" rows="5"></textarea>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-sm animated-button victoria-one"
+                (click)="onSubmit()">Wyślij</button>
 
-      <button type="submit" class="btn btn-success" (click)="onSubmit()">Wyślij</button>
+
     </div>
   </form>
+  <br>
+  <br>
+  <a href="/profile">
+    <button class="btn btn-sm animated-button victoria-one" type="button">
+      Wróć
+    </button>
+  </a>
 
 </div>
 </body>

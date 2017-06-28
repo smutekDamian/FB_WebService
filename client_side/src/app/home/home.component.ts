@@ -4,6 +4,8 @@ import {ProfileDetails} from "../model/profile-details";
 import {WallPostService} from "../wallPost.service";
 import {Post} from "../model/post";
 import {post} from "selenium-webdriver/http";
+import {Router} from '@angular/router';
+import {delay} from "q";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,8 @@ export class HomeComponent implements OnInit {
   p: Post = new Post();
 
 
-  constructor(private profileDetailsService: ProfileDetailsService, private wallPostService: WallPostService) { }
+  constructor(private profileDetailsService: ProfileDetailsService, private wallPostService: WallPostService,
+  private router: Router) { }
 
   getProfileDetails(): void {
     this.profileDetailsService
@@ -34,6 +37,9 @@ export class HomeComponent implements OnInit {
     this.p.picture = "Łobrazek";
     this.wallPostService.create(this.p)
       .subscribe(error => this.errorMessage = <any>error);
+    delay(1000);
+    this.router.navigateByUrl('/profile');
+
   }
 
 

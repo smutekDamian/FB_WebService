@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 export class WallPostService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private wallPostsUrl = 'api/wall';
+  private deletePostUrl = 'api/deletePost';
 
   constructor(private http: Http) { }
 
@@ -19,6 +20,13 @@ export class WallPostService {
       .map(this.extractData)
       .catch(this.handleError);
   }
+  deletePost(id: string): Observable<string> {
+    return this.http
+      .post(this.deletePostUrl, JSON.stringify(id), {headers: this.headers})
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
 
   private handleError(error: Response | any) {
     console.error(error.message || error);

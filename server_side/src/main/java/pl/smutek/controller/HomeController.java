@@ -1,10 +1,6 @@
 package pl.smutek.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.gson.JsonObject;
-import jdk.nashorn.internal.objects.NativeJSON;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +8,9 @@ import org.springframework.social.ApiException;
 import org.springframework.social.facebook.api.*;
 import org.springframework.web.bind.annotation.*;
 import pl.smutek.Field;
-import pl.smutek.model.*;
 import pl.smutek.model.Post;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by damian on 02.06.17.
@@ -44,9 +37,9 @@ public class HomeController {
         try {
             facebook.feedOperations().post(postData);
         } catch (ApiException e){
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

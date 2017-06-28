@@ -1,6 +1,7 @@
 export class Post {
-  name: string
-  from: string;
+  id: string
   message: string;
+  from: string;
+  name: string;
   picture: string;
 }

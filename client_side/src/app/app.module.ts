@@ -10,6 +10,7 @@ import { StartComponent } from './start/start.component';
 import {ProfileDetailsService} from "./profileDetails.service";
 import { WallPostService } from "./wallPost.service"
 import { HomeComponent } from './home/home.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     ProfileComponent,
     StartComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,10 @@ import { HomeComponent } from './home/home.component';
         path: '',
         redirectTo: '/start',
         pathMatch: 'full'
+      },
+      {
+        path: 'profileDetails',
+        component: ProfileDetailsComponent
       }
     ])
   ],

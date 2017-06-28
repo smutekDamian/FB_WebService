@@ -3,4 +3,8 @@ export class ProfileDetails {
   firstName: string;
   lastName: string;
   email: string;
+  profileImage: string;
+  birthday:string;
+  hometown: string;
+  about: string;
 }

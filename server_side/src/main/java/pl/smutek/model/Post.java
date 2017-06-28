@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
+    private String id;
     private String message;
     private String from;
     private String name;
@@ -14,11 +15,20 @@ public class Post implements Serializable {
 
 
 
-    public Post(String message, String from, String name,   String picture) {
+    public Post(String id, String message, String from, String name,   String picture) {
+        this.id = id;
         this.name = name;
         this.from = from;
         this.message = message;
         this.picture = picture;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
